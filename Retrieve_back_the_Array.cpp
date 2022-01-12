@@ -31,43 +31,7 @@ unsigned long long int ipow( ll base, ll exp )
     return result;
 }
 
-void func(int n,int x)
-{
-    int count = 0,i=1;
-    unordered_set<int>s;
-    while(count!=n)
-    {
-        int a=i;
-        int b=a^x;
-        if(s.find(a) == s.end()&&a!=x&&b!=x)
-        {
-            cout<<a<<" "<<b<<" ";
-            count+=2;
-            s.insert(a);
-            s.insert(b);
-        }
-        i++;
-    }
-}
 
-void func1(int n,int x)
-{
-    int count = 0,i=7;
-    unordered_set<int>s;
-    while(count!=n)
-    {
-        int a=i;
-        int b=a^x;
-        if(s.find(a) == s.end()&&a!=x&&b!=x&&b!=1&&b!=2&&b!=3&&b!=4&&b!=5&&b!=6)
-        {
-            cout<<a<<" "<<b<<" ";
-            count+=2;
-            s.insert(a);
-            s.insert(b);
-        }
-        i++;
-    }
-}
 
 int main()
 {
@@ -76,34 +40,38 @@ int main()
     cin>>t;
     while(t)
     {
-        int n,x;
-        cin>>n>>x;
-        if(n%4==0)
-        {
-            func1(n-4,x);
-            if(x>3)
-            cout<<"1"<<" "<<"2"<<" "<<"3"<<" "<<x;
-            else if(x==1||x==3)
-            cout<<"4"<<" "<<"2"<<" "<<"6"<<" "<<x;
-            else
-            cout<<"1"<<" "<<"5"<<" "<<"4"<<" "<<x;
+        int n,X;
+		cin>>n>>X;
+		if(n==1)
+			cout<<X<<endl;
+		else if(n==2)
+			cout<<0<<" "<<X<<endl;
+		else
+		{
+			int x = 0;
+			for(int i=1;i<=n-3;i++){
+				cout<<i<<" ";
+				x = x^i;
+			}
+			if(x==X){
+				int p = (n-2);
+				int q = 2*(n-2);
+				cout<<p<<" "<<q<<" "<<(p^q)<<endl;
+			}
+			else
+			{
+				int p = n-2;
+				int th = p^X^x;
+				while(th==p||th>500000||th==0||th<=n-3)
+				{
+					p+=1;
+					th = p^X^x;
+				}
+				cout<<0<<" "<<p<<" "<<th<<endl;
+			}
+		}
 
-
-
-        }
-        else if(n%2==0)
-        func(n,x);
-        else
-        {
-            func(n-1,x);
-            if((n-1)%4==0)
-            cout<<x;
-            else
-            cout<<"0";
-        }
-        cout<<endl;
-
- 
+  
         t--;
     }
     return 0;
