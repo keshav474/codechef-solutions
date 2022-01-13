@@ -32,50 +32,6 @@ unsigned long long int ipow( ll base, ll exp )
     return result;
 }
 
-int solve(int n,int m)
-{
-    vector<int>v;
-    vector<int>::iterator it;
-    vector<int>::iterator it2;
-    vector<int>::iterator it1;
-    
-    
-    frr(i,1,n+1)
-    v.push_back(i);
-    if(n>m)
-    v.erase(v.begin()+m-1,v.end());
-    
-    while(v.size()!=1)
-    {
-        int a=m%v.size();
-        it=v.begin();
-        if(m==1)
-        {
-            it=v.begin();           
-        }
-        else if(a==0)
-            {
-                it=v.begin()+v.size()-1;
-                
-            }
-        
-        else
-            it=v.begin()+a-1;
-        
-            
-            v.erase(it);
-            it2=v.end();
-            
-    
-
-    }
-    
-    return v[0];
-
-
-
-}
-
 int main()
 {
     // FAST INPUT OUTPUT
@@ -83,34 +39,25 @@ int main()
     cin>>t;
     while(t)
     {
-        int n,m;
-        cin>>m>>n;
-
-        
-        cout<<"1 ";
-        if(m-1&1)
-        cout<<"1 ";
-        else
-        cout<<"2 ";
-        int x;
-        for(int x=3;x<=n;x++)
-        {
-            if(x<=m)
-            cout<<solve(x,m)<<" ";
-            else if(x==m+1)
-            {   
-                x=solve(x,m);
-                cout<<x<<" ";
+        int m,x;
+        cin>>m>>x;
+        m=m-1;
+        int a[x];
+        a[0]=1;
+        int j;
+        for(int i=1;i<x;i++){
+            j=(m%(i+1))+1;
+            if(a[i-1]<j){
+                a[i]=a[i-1];
             }
-            else
-            cout<<x<<" ";
-
-
-
-
-
+            else{
+                a[i]=a[i-1]+1;
+            }
         }
-            cout<<endl;
+        for(int i=0;i<x;i++){
+            cout<<a[i]<<" ";
+        }
+        cout<<endl;
  
         t--;
     }
