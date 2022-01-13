@@ -40,27 +40,12 @@ int main()
     {
         int n,m;
         cin>>n>>m;
-        double arr[n+1][m+1];
-        ms(arr,0);
-        double res=0;
-        arr[0][1]=1;
-        arr[1][0]=1;
-        frr(i,1,n+1)
-        {
-            frr(j,1,m+1)
-            {
-                if(i==n&&j>1)
-                arr[i][j]=arr[i-1][j]/2+arr[i][j-1];
-                else if(j==m&&i>1)
-                arr[i][j]=arr[i-1][j]+arr[i][j-1]/2;
-                else
-                arr[i][j]=arr[i-1][j]/2+arr[i][j-1]/2;
-                res+=arr[i][j];
-                // debug(res);
-            }
-        }
         
-        cout<<fixed<<setprecision(6)<<res-arr[n][m]+1<<endl;
+        
+        double res=n+m-1;
+        
+        
+        cout<<fixed<<setprecision(6)<<res<<endl;
  
         t--;
     }
