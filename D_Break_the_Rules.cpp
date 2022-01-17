@@ -31,6 +31,80 @@ unsigned long long int ipow( ll base, ll exp )
     return result;
 }
 
+string oneSolver(string s,int n)
+{
+    if(n==0)
+    return s;
+    int count=0,i=0,prev=-1,nxt=s.length(),index;
+    while(count <n)
+    {
+        if(s[i] =='^'||s[i]=='|'||s[i]=='&')
+        {
+            count++;
+            index = i;
+            if(count ==n-1)
+            prev=i;
+        }
+        
+        i++;
+    }
+    while(i<s.length())
+    {
+        if(s[i] =='^'||s[i]=='|'||s[i]=='&')
+        {
+            nxt=i;
+            break;
+        }
+        i++;
+    }
+    string str1=s.substr(prev+1,index-prev-1),str2=s.substr(index+1,nxt-index-1);
+    ll a,b,c;
+    a=stoll(str1),b=stoll(str2);
+    if(s[index]=='&')
+    c=a&b;
+    else if(s[index]=='^')
+    c=a^b;
+    else
+    c=a|b;
+    str1=to_string(c);
+    str2=s.substr(nxt,s.length()-nxt);
+    string r;
+    if(prev!=-1)
+    r=s.substr(0,prev+1);
+    r=r+str1;
+    r=r+str2;
+    // debug(a);
+    // debug(b);
+    // debug(r);
+    
+    return r;
+}
+int arr[3628810]={},num=0;
+
+void maxfinder(string s, int n) 
+{
+    if(n==0)
+    {
+        arr[num]=stoll(s);
+        // debug(arr[num]);
+        num++;
+        return;
+    }
+    else
+    {
+
+        for(int i=1; i<=n; i++)
+        {
+            maxfinder(oneSolver(s,i),n-1);
+            // debug(endl);
+
+        }
+    }
+
+}
+
+
+
 int main()
 {
     FAST INPUT OUTPUT
@@ -38,8 +112,20 @@ int main()
     cin>>t;
     while(t)
     {
-        int n;
-        cin>>n;
+        num=0;
+        ms(arr,0);
+        string s;
+        cin>>s;
+        int n=0;
+        for(int i=0;i<s.length();i++)
+            if(s[i] =='^'||s[i]=='|'||s[i]=='&')
+                n++;
+        // debug(n);
+
+        maxfinder(s,n);
+        int res = 0;
+        frr(i,0,num)res=max(res,arr[i]);
+        cout<<res<<endl;
  
         t--;
     }
