@@ -46,11 +46,11 @@ int main()
         ll arr_idx[32];
         for(ll i=0;i<32;i++)
         {
-            ll jk = n - binpow(2, i) + 1;
-            ll kl=(jk) / binpow(2, i + 1);
-            arr_idx[i] = ( kl)* binpow(2, i);
+            ll var1 = n - binpow(2, i) + 1;
+            ll var2=(var1) / binpow(2, i + 1);
+            arr_idx[i] = ( var2)* binpow(2, i);
             ll x = binpow(2, i + 1);
-            ll op=(jk) %x ;
+            ll op=(var1) %x ;
             if(op<0)
         {   lss_idx=i-1;
             break;
