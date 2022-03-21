@@ -110,7 +110,7 @@ int main()
     FAST INPUT OUTPUT
     int t;
     cin>>t;
-    while(t)
+    while(t) 
     {
         num=0;
         ms(arr,0);
