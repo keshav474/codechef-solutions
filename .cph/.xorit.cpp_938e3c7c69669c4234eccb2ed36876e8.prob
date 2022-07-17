@@ -1,0 +1,1 @@
+{"name":"Local: xorit","url":"d:\\cpp\\practice\\codechef-solutions\\xorit.cpp","tests":[{"id":1641663334100,"input":"1\n3\n1 2 3","output":"7 500007 8 500008 9 500009 10 500010 11 500011 12 500012 13 500013 0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\cpp\\practice\\codechef-solutions\\xorit.cpp","group":"local","local":true}

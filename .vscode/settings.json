@@ -1,0 +1,7 @@
+{
+    "cph.general.timeOut": 30000,
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
+}
